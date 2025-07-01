@@ -28,7 +28,6 @@ public class User {
 //    private UserStatus status;
     private Instant createdTime;
     private Instant updatedTime;
-    private Instant updatedBy;
     private UserStatus status;
     @ManyToOne
     @JoinColumn(name = "role_id")
