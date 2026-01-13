@@ -18,10 +18,13 @@ public class Category {
     private UUID id;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(200)")
-    @NotBlank(message = "Name cannot be blank")
-    @Size(min = 1, message = "Name must be at least 1 character long")
+    @NotBlank(message = "Tên danh mục không được để trống")
+    @Size(min = 1, message = "Tên danh mục phải từ 1 đến 200 ký tự")
     private String name;
+    @Column(columnDefinition = "ENUM('ACTIVE','INACTIVE')")
+    @Enumerated(EnumType.STRING)
     private CategoryStatus status;
+
     private String description;
 
 //    private CategoryStatus status;

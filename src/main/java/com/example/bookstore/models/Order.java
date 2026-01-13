@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,5 +23,9 @@ public class Order {
 
     private LocalDateTime orderDate;
     private Double totalPrice;
+    @Column(columnDefinition = "ENUM('PENDING','COMPLETED')")
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> orderDetails;
 }
